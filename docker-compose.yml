@@ -1,0 +1,15 @@
+# Local Qdrant for development and integration tests.
+#   docker compose up -d
+# Dashboard: http://localhost:6333/dashboard   gRPC (used by fkqdrant): localhost:6334
+services:
+  qdrant:
+    image: qdrant/qdrant:v1.20.0
+    ports:
+      - "127.0.0.1:6333:6333"
+      - "127.0.0.1:6334:6334"
+    volumes:
+      - qdrant_data:/qdrant/storage
+    restart: unless-stopped
+
+volumes:
+  qdrant_data:
